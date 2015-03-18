@@ -41,5 +41,5 @@
 	此项目是喵玉殿技术部的活动项目
 	
 	使用させていただいたライブラリ等：
-　	  DX Library
-　　　	    Copyright (C) 2001-2014 Takumi Yamada.
+　	DX Library
+　　　	Copyright (C) 2001-2014 Takumi Yamada.
