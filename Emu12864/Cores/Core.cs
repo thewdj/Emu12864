@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*Comment one if you do not want to use it*/
+#define PIXEL_DRAW
+#define BOX_DRAW
+
+using System;
 using System.Drawing;
 using System.IO;
 using System.Diagnostics;
@@ -187,7 +191,7 @@ namespace Emu12864
             /* 对DxLib的二次封装
              * 操作DxLib的函数尽量在这里进行封装
              */
-            private const int ExRate = 3;
+            private const int ExRate = 10;
 
             public static bool DxInit(IntPtr IconHandle, string Title, bool IsFullScreen, int Width, int Height)
             {
@@ -258,16 +262,22 @@ namespace Emu12864
             {
                 /* 绘制像素的函数
                  */
+#if PIXEL_DRAW
                 for (int i = 0; i < ExRate; i++)
                     for (int j = 0; j < ExRate; j++)
                         DX.DrawPixel(x * ExRate + i, y * ExRate + j, Color);
+#endif
+
+#if BOX_DRAW
+                DX.DrawBox(x * ExRate, y * ExRate, (x + 1) * ExRate, (y + 1) * ExRate, Color, 1);
+#endif
             }
 
         }
 
         public class GlCS
         {
-            
+
         }
 
         public class EngineBase
@@ -284,7 +294,7 @@ namespace Emu12864
                     int i = 0, j = 0;
                     for (i = 0; i < Dat.GetLength(0); i++)
                         for (j = 0; j < Dat.GetLength(1); j++)
-                           if (Dat[i,j] != -1) DxCS.DrawPixel(x + i, y + j, Dat[i, j]);
+                            if (Dat[i, j] != -1) DxCS.DrawPixel(x + i, y + j, Dat[i, j]);
                 }
 
             }
@@ -395,7 +405,7 @@ namespace Emu12864
                         {
                             if (j == BMP.Height - 1) CookedData += "BMPTRANS, " + " },\n";
                             else CookedData += "BMPTRANS, ";
-                        }   
+                        }
                         else
                         {
                             if (j == BMP.Height - 1) CookedData += "0x" + RgbToInt(BMP.GetPixel(i, j).R, BMP.GetPixel(i, j).G, BMP.GetPixel(i, j).B).ToString("X6") + " },\n";
