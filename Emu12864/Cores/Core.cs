@@ -1,5 +1,5 @@
 ﻿/*Comment one if you do not want to use it*/
-#define PIXEL_DRAW
+//#define PIXEL_DRAW
 #define BOX_DRAW
 
 using System;
@@ -300,12 +300,13 @@ namespace Emu12864
             }
 
             /*EMU写数据，带颜色和是否透明*/
+            /*于2016.11.1修改为寻址式坐标*/
             private static void EMU_WrDat(int x, int y, int Dat, int Color, bool Transparent)
             {
                 for (int i = 0; i < 8; i++) //发送一个八位数据 
                 {
-                    if (((Dat << i) & 0x80) != 0) DxCS.DrawPixel(x, y + 8 - i, Color);
-                    else if (!Transparent) DxCS.DrawPixel(x, y + 8 - i, 0x000000);
+                    if (((Dat << i) & 0x80) != 0) DxCS.DrawPixel(x, y * 8 + 8 - i, Color);
+                    else if (!Transparent) DxCS.DrawPixel(x, y * 8 + 8 - i, 0x000000);
 
                 }
             }
@@ -337,7 +338,7 @@ namespace Emu12864
                     for (i = 0; i < 8; i++)
                         EMU_WrDat(x + i, y, Res.F8X16[c, i], Color, Transparent);
                     for (i = 0; i < 8; i++)
-                        EMU_WrDat(x + i, y + 8, Res.F8X16[c, i + 8], Color, Transparent);
+                        EMU_WrDat(x + i, y + 1, Res.F8X16[c, i + 8], Color, Transparent);
                     x += 8;
                     j++;
                 }

@@ -24,27 +24,17 @@ namespace Emu12864
 
             /* 分辨率设置以及窗口加载
              */
-            if (FullScreen.Checked)
+            Control.ControlCollection DModes = DMPanel.Controls;
+            foreach (RadioButton r in DModes)
             {
-                if (DMode1.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, true, 1280, 720))
-                        goto ExitFlag;
-                if (DMode2.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, true, 1600, 900))
-                        goto ExitFlag;
-                if (DMode3.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, true, 1920, 1080))
-                        goto ExitFlag;
-                if (DMode4.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, true, 2560, 1440))
-                        goto ExitFlag;
-            }
-            else
-            {
-                if (DMode1.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, false, 1280, 720))
-                        goto ExitFlag;
-                if (DMode2.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, false, 1600, 900))
-                        goto ExitFlag;
-                if (DMode3.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, false, 1920, 1080))
-                        goto ExitFlag;
-                if (DMode4.Checked) if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle, false, 2560, 1440))
-                        goto ExitFlag;
+                if (r.Checked)
+                {
+                    if (!Core.DxCS.DxInit(this.Icon.Handle, GameTitle,
+                        FullScreen.Checked,
+                        Convert.ToInt32(r.Text.Split('×')[0]), Convert.ToInt32(r.Text.Split('×')[1]))
+                        ) goto ExitFlag;
+                    break;
+                }
             }
 
             /* 实例化游戏类
@@ -66,6 +56,11 @@ namespace Emu12864
             
             Core.DxCS.DxEnd();
             this.Dispose();
+        }
+
+        private void Launcher_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBox.Show("NSDN(TM) 2014 - 2017\nCopyright the WDJ 2005 - 2017", "Something...");
         }
     }
 }
