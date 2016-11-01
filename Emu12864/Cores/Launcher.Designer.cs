@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Launcher));
             this.DMPanel = new System.Windows.Forms.Panel();
+            this.DMode6 = new System.Windows.Forms.RadioButton();
+            this.DMode4 = new System.Windows.Forms.RadioButton();
+            this.DMode2 = new System.Windows.Forms.RadioButton();
+            this.DMode0 = new System.Windows.Forms.RadioButton();
             this.DMode7 = new System.Windows.Forms.RadioButton();
             this.DMode5 = new System.Windows.Forms.RadioButton();
             this.DMode3 = new System.Windows.Forms.RadioButton();
             this.DMode1 = new System.Windows.Forms.RadioButton();
             this.FullScreen = new System.Windows.Forms.CheckBox();
             this.Launch = new System.Windows.Forms.Button();
-            this.DMode6 = new System.Windows.Forms.RadioButton();
-            this.DMode4 = new System.Windows.Forms.RadioButton();
-            this.DMode2 = new System.Windows.Forms.RadioButton();
-            this.DMode0 = new System.Windows.Forms.RadioButton();
             this.DMPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,50 @@
             this.DMPanel.Name = "DMPanel";
             this.DMPanel.Size = new System.Drawing.Size(206, 76);
             this.DMPanel.TabIndex = 0;
+            // 
+            // DMode6
+            // 
+            this.DMode6.AutoSize = true;
+            this.DMode6.Location = new System.Drawing.Point(10, 57);
+            this.DMode6.Margin = new System.Windows.Forms.Padding(1);
+            this.DMode6.Name = "DMode6";
+            this.DMode6.Size = new System.Drawing.Size(77, 16);
+            this.DMode6.TabIndex = 8;
+            this.DMode6.Text = "1920×960";
+            this.DMode6.UseVisualStyleBackColor = true;
+            // 
+            // DMode4
+            // 
+            this.DMode4.AutoSize = true;
+            this.DMode4.Location = new System.Drawing.Point(10, 39);
+            this.DMode4.Margin = new System.Windows.Forms.Padding(1);
+            this.DMode4.Name = "DMode4";
+            this.DMode4.Size = new System.Drawing.Size(77, 16);
+            this.DMode4.TabIndex = 7;
+            this.DMode4.Text = "1024×512";
+            this.DMode4.UseVisualStyleBackColor = true;
+            // 
+            // DMode2
+            // 
+            this.DMode2.AutoSize = true;
+            this.DMode2.Location = new System.Drawing.Point(10, 21);
+            this.DMode2.Margin = new System.Windows.Forms.Padding(1);
+            this.DMode2.Name = "DMode2";
+            this.DMode2.Size = new System.Drawing.Size(71, 16);
+            this.DMode2.TabIndex = 6;
+            this.DMode2.Text = "512×256";
+            this.DMode2.UseVisualStyleBackColor = true;
+            // 
+            // DMode0
+            // 
+            this.DMode0.AutoSize = true;
+            this.DMode0.Location = new System.Drawing.Point(10, 3);
+            this.DMode0.Margin = new System.Windows.Forms.Padding(1);
+            this.DMode0.Name = "DMode0";
+            this.DMode0.Size = new System.Drawing.Size(65, 16);
+            this.DMode0.TabIndex = 5;
+            this.DMode0.Text = "128×64";
+            this.DMode0.UseVisualStyleBackColor = true;
             // 
             // DMode7
             // 
@@ -130,55 +174,11 @@
             this.Launch.UseVisualStyleBackColor = true;
             this.Launch.Click += new System.EventHandler(this.Launch_Click);
             // 
-            // DMode6
-            // 
-            this.DMode6.AutoSize = true;
-            this.DMode6.Location = new System.Drawing.Point(10, 57);
-            this.DMode6.Margin = new System.Windows.Forms.Padding(1);
-            this.DMode6.Name = "DMode6";
-            this.DMode6.Size = new System.Drawing.Size(77, 16);
-            this.DMode6.TabIndex = 8;
-            this.DMode6.Text = "1920×960";
-            this.DMode6.UseVisualStyleBackColor = true;
-            // 
-            // DMode4
-            // 
-            this.DMode4.AutoSize = true;
-            this.DMode4.Location = new System.Drawing.Point(10, 39);
-            this.DMode4.Margin = new System.Windows.Forms.Padding(1);
-            this.DMode4.Name = "DMode4";
-            this.DMode4.Size = new System.Drawing.Size(77, 16);
-            this.DMode4.TabIndex = 7;
-            this.DMode4.Text = "1024×512";
-            this.DMode4.UseVisualStyleBackColor = true;
-            // 
-            // DMode2
-            // 
-            this.DMode2.AutoSize = true;
-            this.DMode2.Location = new System.Drawing.Point(10, 21);
-            this.DMode2.Margin = new System.Windows.Forms.Padding(1);
-            this.DMode2.Name = "DMode2";
-            this.DMode2.Size = new System.Drawing.Size(71, 16);
-            this.DMode2.TabIndex = 6;
-            this.DMode2.Text = "512×256";
-            this.DMode2.UseVisualStyleBackColor = true;
-            // 
-            // DMode0
-            // 
-            this.DMode0.AutoSize = true;
-            this.DMode0.Location = new System.Drawing.Point(10, 3);
-            this.DMode0.Margin = new System.Windows.Forms.Padding(1);
-            this.DMode0.Name = "DMode0";
-            this.DMode0.Size = new System.Drawing.Size(65, 16);
-            this.DMode0.TabIndex = 5;
-            this.DMode0.Text = "128×64";
-            this.DMode0.UseVisualStyleBackColor = true;
-            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(224, 121);
+            this.ClientSize = new System.Drawing.Size(214, 111);
             this.Controls.Add(this.Launch);
             this.Controls.Add(this.FullScreen);
             this.Controls.Add(this.DMPanel);
@@ -186,9 +186,9 @@
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(240, 160);
+            this.MaximumSize = new System.Drawing.Size(230, 150);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(240, 160);
+            this.MinimumSize = new System.Drawing.Size(230, 150);
             this.Name = "Launcher";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
